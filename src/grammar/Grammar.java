@@ -8,7 +8,7 @@ package grammar;
 
 /**
  *
- * @author jure
+ * @author JureMAlovrh
  */
 public class Grammar {
 
