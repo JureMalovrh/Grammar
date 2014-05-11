@@ -6,6 +6,8 @@
 
 package grammar;
 
+import java.io.File;
+
 /**
  *
  * @author JureMalovrh
@@ -28,16 +30,24 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        dodajBesedo = new javax.swing.JButton();
+        testZnanja = new javax.swing.JButton();
+        mojSlovar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Dodaj novo besedo");
-        jButton1.setToolTipText("klikni za dodajo nove besede");
+        dodajBesedo.setText("Dodaj novo besedo");
+        dodajBesedo.setToolTipText("klikni za dodajo nove besede");
+        dodajBesedo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dodajBesedoActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Preveri svoje znanje");
-        jButton2.setToolTipText("klikni za test");
+        testZnanja.setText("Preveri svoje znanje");
+        testZnanja.setToolTipText("klikni za test");
+
+        mojSlovar.setText("Moj slovar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -46,22 +56,35 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(124, 124, 124)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dodajBesedo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(testZnanja, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mojSlovar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(131, 131, 131))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(112, 112, 112)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dodajBesedo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addComponent(testZnanja)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(mojSlovar)
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void dodajBesedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dodajBesedoActionPerformed
+        File f = new File("C:/grammar.txt");
+        if(f.exists()==true && !f.isDirectory()){
+            
+        }
+        else{
+            
+        }
+    }//GEN-LAST:event_dodajBesedoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -99,7 +122,8 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton dodajBesedo;
+    private javax.swing.JButton mojSlovar;
+    private javax.swing.JButton testZnanja;
     // End of variables declaration//GEN-END:variables
 }
