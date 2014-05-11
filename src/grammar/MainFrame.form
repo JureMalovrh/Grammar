@@ -63,11 +63,17 @@
         <Property name="text" type="java.lang.String" value="Preveri svoje znanje"/>
         <Property name="toolTipText" type="java.lang.String" value="klikni za test"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="testZnanjaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="mojSlovar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Moj slovar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mojSlovarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

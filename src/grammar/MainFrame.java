@@ -6,7 +6,12 @@
 
 package grammar;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -46,8 +51,18 @@ public class MainFrame extends javax.swing.JFrame {
 
         testZnanja.setText("Preveri svoje znanje");
         testZnanja.setToolTipText("klikni za test");
+        testZnanja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                testZnanjaActionPerformed(evt);
+            }
+        });
 
         mojSlovar.setText("Moj slovar");
+        mojSlovar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mojSlovarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -77,14 +92,18 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void dodajBesedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dodajBesedoActionPerformed
-        File f = new File("C:/grammar.txt");
-        if(f.exists()==true && !f.isDirectory()){
-            
-        }
-        else{
-            
-        }
+        new dodajBesedoFrame().setVisible(true);
     }//GEN-LAST:event_dodajBesedoActionPerformed
+
+    private void testZnanjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testZnanjaActionPerformed
+        // TODO add your handling code here:
+        new testZnanjaFrame().setVisible(true);
+    }//GEN-LAST:event_testZnanjaActionPerformed
+
+    private void mojSlovarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mojSlovarActionPerformed
+        // TODO add your handling code here:
+        new slovarFrame().setVisible(true);
+    }//GEN-LAST:event_mojSlovarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,6 +136,7 @@ public class MainFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainFrame().setVisible(true);
+                
             }
         });
     }
