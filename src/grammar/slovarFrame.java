@@ -6,6 +6,15 @@
 
 package grammar;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author jure
@@ -29,19 +38,35 @@ public class slovarFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        tekst = new javax.swing.JTextArea();
         finish = new javax.swing.JButton();
+        osveži = new javax.swing.JButton();
+        spremembe = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        tekst.setColumns(20);
+        tekst.setRows(5);
+        jScrollPane1.setViewportView(tekst);
 
         finish.setText("končaj");
         finish.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 finishActionPerformed(evt);
+            }
+        });
+
+        osveži.setText("prikaži slovar");
+        osveži.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                osvežiActionPerformed(evt);
+            }
+        });
+
+        spremembe.setText("shrani spremembe");
+        spremembe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                spremembeActionPerformed(evt);
             }
         });
 
@@ -52,9 +77,12 @@ public class slovarFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(osveži)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(spremembe)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                         .addComponent(finish)))
                 .addContainerGap())
         );
@@ -64,7 +92,10 @@ public class slovarFrame extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(finish)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(finish)
+                    .addComponent(osveži)
+                    .addComponent(spremembe))
                 .addContainerGap())
         );
 
@@ -74,6 +105,31 @@ public class slovarFrame extends javax.swing.JFrame {
     private void finishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishActionPerformed
         hide();
     }//GEN-LAST:event_finishActionPerformed
+
+    private void osvežiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_osvežiActionPerformed
+        tekst.setText("");
+        File f = new File("grammar.txt");
+        try {
+            Scanner sc = new Scanner(f);
+            while(sc.hasNext()){
+                String line = sc.nextLine();
+                tekst.append(line+"\n");
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(slovarFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_osvežiActionPerformed
+
+    private void spremembeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spremembeActionPerformed
+        String popravek = tekst.getText();
+        BufferedWriter writer = null;
+        try {
+        BufferedWriter out = new BufferedWriter(new FileWriter("grammar.txt"));
+                out.write(popravek);
+                out.close();
+        } catch (IOException e) {}
+    }//GEN-LAST:event_spremembeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -113,6 +169,8 @@ public class slovarFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton finish;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton osveži;
+    private javax.swing.JButton spremembe;
+    private javax.swing.JTextArea tekst;
     // End of variables declaration//GEN-END:variables
 }

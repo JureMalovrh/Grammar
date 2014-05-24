@@ -6,12 +6,30 @@
 
 package grammar;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author jure
  */
 public class testZnanjaFrame extends javax.swing.JFrame {
-
+    
+    /**
+     *
+     */
+    HashMap <Integer,String[]> besede = null;
+    int[] indeksi;
+    int stevec=0;
+    /**
+     * Creates new form testZnanjaFrame
+     */
     /**
      * Creates new form testZnanjaFrame
      */
@@ -28,21 +46,178 @@ public class testZnanjaFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        vnosBesede = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        sloBeseda = new javax.swing.JLabel();
+        zacni = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        rezultatiVnos = new javax.swing.JLabel();
+        finish = new javax.swing.JButton();
+        odgovori = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        vnosBesede.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vnosBesedeActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("slovenska beseda");
+
+        jLabel2.setText("angleški prevod");
+
+        zacni.setText("začni test");
+        zacni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                zacniActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("rezultati: ");
+
+        finish.setText("končano");
+        finish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finishActionPerformed(evt);
+            }
+        });
+
+        odgovori.setText("odgovori");
+        odgovori.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                odgovoriActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(finish))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3)
+                        .addGap(39, 39, 39)
+                        .addComponent(rezultatiVnos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(odgovori)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(zacni))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(sloBeseda, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(vnosBesede)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(0, 145, Short.MAX_VALUE)))))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(vnosBesede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sloBeseda, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(odgovori)
+                    .addComponent(zacni))
+                .addGap(56, 56, 56)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(rezultatiVnos, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addComponent(finish)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void vnosBesedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vnosBesedeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vnosBesedeActionPerformed
+
+    private void finishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishActionPerformed
+        // TODO add your handling code here:
+        hide();
+    }//GEN-LAST:event_finishActionPerformed
+
+    private void zacniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zacniActionPerformed
+        // TODO add your handling code here:
+        zacni.setEnabled(false);
+        File f = new File("grammar.txt");
+        besede = new HashMap<Integer, String[]>();
+        try {
+            Scanner sc = new Scanner(f);
+            int stevecL=0;
+            while (sc.hasNext()){
+                String line = sc.nextLine();
+                String[] table = line.split("-");
+                String ang = table[0];
+                String slo = table[1];
+                System.out.println(line+" "+ang+" "+slo);
+                
+                besede.put(stevecL,table);
+                stevecL++;
+            }
+            System.out.println(besede.toString());
+            int st = besede.size();
+            //int[] indeksi = new int [st];
+            int[] indeksiRandom = new int [st];
+            indeksi = new int [st];
+            //array of indexes
+            for(int i = 0; i < st; i++){
+                indeksi[i]=i;
+                indeksiRandom[i]=i;
+            }
+            //shuffle array of indexes
+            
+            System.out.println(Arrays.toString(indeksi));
+            
+            for(int i=0; i<st;i++){
+                int rnd =(int) (Math.random()*st);
+                int tmp = indeksi[i];
+                indeksi[i]=indeksi[rnd];
+                indeksi[rnd]=tmp;
+            }
+            odgovoriActionPerformed(null);
+            System.out.println(Arrays.toString(indeksi));
+            
+            
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(testZnanjaFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_zacniActionPerformed
+
+    private void odgovoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_odgovoriActionPerformed
+        int indeks = indeksi[stevec];
+        for(int i = 0; i<indeksi.length;i++){
+            String[] bes = besede.get(i);
+            sloBeseda.setText(bes[1]);
+            
+        }
+        //String ang = besede.;
+    }//GEN-LAST:event_odgovoriActionPerformed
 
     /**
      * @param args the command line arguments
@@ -80,5 +255,14 @@ public class testZnanjaFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton finish;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton odgovori;
+    private javax.swing.JLabel rezultatiVnos;
+    private javax.swing.JLabel sloBeseda;
+    private javax.swing.JTextField vnosBesede;
+    private javax.swing.JButton zacni;
     // End of variables declaration//GEN-END:variables
 }
